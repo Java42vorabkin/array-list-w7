@@ -89,39 +89,78 @@ public class ArrayList<T> implements List<T> {
 	}
 	@Override
 	public int indexOf(T pattern) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int lastIndexOf(T pattern) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public boolean contains(Predicate<T> predicate) {
-		boolean res = false;
-		for(int i = 0; i < size; i++) {
-			if (predicate.test(array[i])) {
-				res = true;
+		//HW6
+		// Done
+		int result = -1;
+		for (int index = 0; index < size; index++) {
+			if (array[index].equals(pattern)) {
+				result = index;
 				break;
 			}
 		}
-		return res;
+		return result;
+	}
+	@Override
+	public int lastIndexOf(T pattern) {
+		//HW #6
+		// Done
+		int result = -1;
+		for (int index = size - 1; index >=0 ; index--) {
+			if (array[index].equals(pattern)) {
+				result = index;
+				break;
+			}
+		}
+		return result;
+	}
+	@Override
+	public boolean contains(Predicate<T> predicate) {
+		boolean result = false;
+		for(int index = 0; index < size; index++) {
+			if (predicate.test(array[index])) {
+				result = true;
+				break;
+			}
+		}
+		return result;
 	}
 	@Override
 	public int indexOf(Predicate<T> predicate) {
-		// TODO Auto-generated method stub
-		return 0;
+		//HW6
+		// Done
+		int result = -1;
+		for (int index = 0; index < size; index++) {
+			if (predicate.test(array[index])) {
+				result = index;
+				break;
+			}
+		}
+		return result;
 	}
 	@Override
 	public int lastIndexOf(Predicate<T> predicate) {
-		// TODO Auto-generated method stub
-		return 0;
+		//HW #6
+		// Done
+		int result = -1;
+		for (int index = size - 1; index >=0 ; index--) {
+			if (predicate.test(array[index])) {
+				result = index;
+				break;
+			}
+		}
+		return result;
 	}
 	@Override
 	public boolean removeIf(Predicate<T> predicate) {
-		// TODO Auto-generated method stub
-		return false;
+		//HW #6
+		// Done
+		int prevSize = size;
+		for (int index = size - 1; index >= 0; index--) {
+			if (predicate.test(array[index])) {
+				remove(index);
+			}
+		}
+		
+		return prevSize > size;
 	}
-
 }
